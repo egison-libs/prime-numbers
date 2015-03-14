@@ -1,3 +1,3 @@
 #!/bin/sh
 
-rm ~/.egison/lib/math/prime.egi
+rm ~/.egison/lib/math/prime-numbers.egi
