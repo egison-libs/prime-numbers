@@ -5,14 +5,10 @@
                 (match [(any (lambda [$p] (eq? (remainder (+ (* 6 k) 1) p) 0)) primes2)
                         (any (lambda [$p] (eq? (remainder (+ (* 6 k) 5) p) 0)) primes2)]
                   [bool bool]
-                  {[[,#f ,#f] (memoize {[prime? (+ (* 6 k) 1) #t] [prime? (+ (* 6 k) 5) #t]}
-                                {(+ (* 6 k) 1) (+ (* 6 k) 5) @(next-primes {@primes1 (+ (* 6 k) 1) (+ (* 6 k) 5)} (+ k 1))})]
-                   [[,#f ,#t] (memoize {[prime? (+ (* 6 k) 1) #t] [prime? (+ (* 6 k) 5) #f]}
-                                {(+ (* 6 k) 1) @(next-primes {@primes1 (+ (* 6 k) 1)} (+ k 1))})]
-                   [[,#t ,#f] (memoize {[prime? (+ (* 6 k) 1) #f] [prime? (+ (* 6 k) 5) #t]}
-                                {(+ (* 6 k) 5) @(next-primes {@primes1 (+ (* 6 k) 5)} (+ k 1))})]
-                   [[,#t ,#t] (memoize {[prime? (+ (* 6 k) 1) #f] [prime? (+ (* 6 k) 5) #f]}
-                                (next-primes primes1 (+ k 1)))]
+                  {[[,#f ,#f] {(+ (* 6 k) 1) (+ (* 6 k) 5) @(next-primes {@primes1 (+ (* 6 k) 1) (+ (* 6 k) 5)} (+ k 1))}]
+                   [[,#f ,#t] {(+ (* 6 k) 1) @(next-primes {@primes1 (+ (* 6 k) 1)} (+ k 1))}]
+                   [[,#t ,#f] {(+ (* 6 k) 5) @(next-primes {@primes1 (+ (* 6 k) 5)} (+ k 1))}]
+                   [[,#t ,#t] (next-primes primes1 (+ k 1))]
                    })))]}
     {@primes-under-two-million @(next-primes primes-under-two-million (quotient 2000000 6))}))
 
