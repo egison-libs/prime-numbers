@@ -1,7 +1,7 @@
 (define $primes
   (letrec {[$next-primes
             (lambda [$primes1 $k]
-              (let {[$primes2 (while (lte? $ (floor (sqrt (itof (* 6 (+ k 1)))))) primes1)]}
+              (let {[$primes2 (take-while (lte? $ (floor (sqrt (itof (* 6 (+ k 1)))))) primes1)]}
                 (match [(any (lambda [$p] (eq? (remainder (+ (* 6 k) 1) p) 0)) primes2)
                         (any (lambda [$p] (eq? (remainder (+ (* 6 k) 5) p) 0)) primes2)]
                   [bool bool]
